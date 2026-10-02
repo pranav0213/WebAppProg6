@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Actor Guessing Game</title>
+  <script>
+    // Part 3: global counters
+    var correct = 0;
+    var notCorrect = 0;
+
+    function checkActor() {
+      var actor = document.getElementById("actor").value;
+      var guess = document.getElementById("guess").value;
+
+      if (actor === guess) {
+        correct++;
+        alert("That's right");
+      } else {
+        notCorrect++;
+        alert("Better luck next time");
+      }
+      document.getElementById("results").innerHTML =
+        "Correct: " + correct + " | Not correct: " + notCorrect;
+    }
+
+    // Part 4: cycle through three food images
+    var usePic = 1;
+
+    function updatePic() {
+      var pic = document.getElementById("foodPic");
+      switch (usePic) {
+        case 1:
+          pic.src = "food1.png";
+          usePic = 2;
+          break;
+        case 2:
+          pic.src = "food2.png";
+          usePic = 3;
+          break;
+        case 3:
+          pic.src = "food3.png";
+          usePic = 1;
+          break;
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Actors by Pranav Torti</h1>
+
+  <form onsubmit="return false;">
+    <label for="actor">Peter Pan</label>
+    <input type="password" id="actor" value="Robin Williams">
+    <br><br>
+    <label for="guess">Who is the actor</label>
+    <input type="text" id="guess">
+    <br><br>
+    <button type="button" onclick="checkActor()">Check the guess</button>
+  </form>
+
+  <p id="results">Correct: 0 | Not correct: 0</p>
+
+  <div id="picContainer">
+    <img id="foodPic" src="food3.png" width="150" height="150" onclick="updatePic()" alt="Favorite food">
+  </div>
+</body>
+</html>
