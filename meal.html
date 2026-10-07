@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Meal Planner</title>
+  <script>
+    var my_meal_plan = {};
+
+    function choices() {
+      my_meal_plan = {};
+      my_meal_plan.breakfast = document.getElementById("breakfast").checked;
+      my_meal_plan.lunch = document.getElementById("lunch").checked;
+      my_meal_plan.dinner = document.getElementById("dinner").checked;
+      document.getElementById("mealResults").innerHTML = JSON.stringify(my_meal_plan);
+    }
+  </script>
+</head>
+<body>
+  <h1>Pranav Torti meal planner</h1>
+
+  <form onsubmit="return false;">
+    <input type="checkbox" id="breakfast" value="True">
+    <label for="breakfast">Breakfast</label>
+    <input type="checkbox" id="lunch" value="False">
+    <label for="lunch">Lunch</label>
+    <input type="checkbox" id="dinner" value="True">
+    <label for="dinner">Dinner</label><br><br>
+    <button type="button" onclick="choices()">Meal Plan Choices</button>
+  </form>
+
+  <p id="mealResults"></p>
+</body>
+</html>
