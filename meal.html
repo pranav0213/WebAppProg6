@@ -4,16 +4,27 @@
   <meta charset="UTF-8">
   <title>Meal Planner</title>
   <script>
+
     var my_meal_plan = {};
 
     function choices() {
+      
       my_meal_plan = {};
       my_meal_plan.breakfast = document.getElementById("breakfast").checked;
       my_meal_plan.lunch = document.getElementById("lunch").checked;
       my_meal_plan.dinner = document.getElementById("dinner").checked;
       document.getElementById("mealResults").innerHTML = JSON.stringify(my_meal_plan);
     }
+      function updateMeal() {
+      var cuisine = document.getElementById("cuisine").value;
+      var beverage = document.getElementById("beverage").value;
+      my_meal_plan["cuisine"] = cuisine;
+      my_meal_plan["beverage"] = beverage;
+      document.getElementById("mealResults").innerHTML = JSON.stringify(my_meal_plan);
+    }
+    
   </script>
+  
 </head>
 <body>
   <h1>Pranav Torti meal planner</h1>
@@ -27,7 +38,13 @@
     <label for="dinner">Dinner</label><br><br>
     <button type="button" onclick="choices()">Meal Plan Choices</button>
   </form>
-
+  <form onsubmit="return false;">
+    <label for="cuisine">Enter cuisine type</label>
+    <input type="text" id="cuisine" value="Italian"><br><br>
+    <label for="beverage">Enter beverage choice</label>
+    <input type="text" id="beverage" value="water"><br><br>
+    <button type="button" onclick="updateMeal()">Update the meal plan</button>
+  </form>
   <p id="mealResults"></p>
 </body>
 </html>
