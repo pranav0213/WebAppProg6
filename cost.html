@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sales Cost Calculator</title>
+  <script>
+    function doDiscount() {
+      var number = Number(document.getElementById("numberItems").value);
+      var cost = Number(document.getElementById("itemCost").value);
+      var discountRate = Number(document.getElementById("discountRate").value);
+      var discountAt = Number(document.getElementById("numberForDiscount").value);
+      var costs = "";
+
+      for (var i = 1; i <= 5; i++) {
+        var checkCount = i * number;
+        var total;
+        if (checkCount <= discountAt) {
+          total = checkCount * cost;
+        } else {
+          total = discountAt * cost + (checkCount - discountAt) * cost * (1 - discountRate);
+        }
+        costs += "checkCount " + checkCount + " is " + total + "; ";
+      }
+      document.getElementById("costResults").innerHTML = "Costs are: " + costs;
+    }
+  </script>
+</head>
+<body>
+  <h1>Pranav Torti sales computation</h1>
+
+  <form onsubmit="return false;">
+    <label for="numberItems">Enter number items</label>
+    <input type="number" id="numberItems" value="1"><br><br>
+
+    <label for="itemCost">Enter the cost of one item</label>
+    <input type="number" id="itemCost" value="20.0" step="any"><br><br>
+
+    <label for="numberForDiscount">Enter number to get discount</label>
+    <input type="number" id="numberForDiscount" value="10"><br><br>
+
+    <label for="discountRate">Enter the discount rate</label>
+    <input type="number" id="discountRate" value="0.15" step="any"><br><br>
+
+    <button type="button" onclick="doDiscount()">Show costs </button>
+  </form>
+
+  <p id="costResults"></p>
+</body>
+</html>
