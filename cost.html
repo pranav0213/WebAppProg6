@@ -23,6 +23,25 @@
       }
       document.getElementById("costResults").innerHTML = "Costs are: " + costs;
     }
+        function chooseOp() {
+      var count = Number(document.getElementById("numberItems").value);
+      var discountAt = Number(document.getElementById("numberForDiscount").value);
+      var op = document.querySelector('input[name="op"]:checked').value;
+      var text = "";
+
+      switch (op) {
+        case "mul":
+          text = count + " times " + discountAt + " is " + (count * discountAt);
+          break;
+        case "add":
+          text = count + " plus " + discountAt + " is " + (count + discountAt);
+          break;
+        case "div":
+          text = count + " divided by " + discountAt + " is " + (count / discountAt);
+          break;
+      }
+      document.getElementById("opResults").innerHTML = text;
+    }
   </script>
 </head>
 <body>
@@ -42,8 +61,20 @@
     <input type="number" id="discountRate" value="0.15" step="any"><br><br>
 
     <button type="button" onclick="doDiscount()">Show costs </button>
-  </form>
+   </form>
 
   <p id="costResults"></p>
+
+  <h2>Pick an operation</h2>
+  <form onsubmit="return false;">
+    <input type="radio" name="op" id="opMul" value="mul" onclick="chooseOp()">
+    <label for="opMul">product</label>
+    <input type="radio" name="op" id="opAdd" value="add" onclick="chooseOp()">
+    <label for="opAdd">sum</label>
+    <input type="radio" name="op" id="opDiv" value="div" onclick="chooseOp()">
+    <label for="opDiv">divide</label>
+  </form>
+
+  <p id="opResults"></p>
 </body>
 </html>
